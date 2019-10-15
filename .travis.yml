@@ -21,7 +21,7 @@ deploy:
   api_key:
     secure: NWoNgnKzxsV4cB1PwJjymf3xIdBySiBjxNt7Yvj7jsrcjSbencAC4nswNJ/gZibsTyNpigW2GjmoWC3+iwVrg1h+rD6R4EoUU1QMIBuJIfskv4jb+CLzUBh6SGbMPTgkG08avgDdw8IYar7qGRZBcL1P33TQe/9hOycmWeZ9VkLA5XE3p3qqmZR94w1Y3tBBvj3avSPoAqRTQppFgCWOGkYREorsTRvHZ0xbfZ15e2X23W0MLplAURYxqfRNIP9fphXLTKFiDNG2wDscm0bqnBc52Cn8ngqvDyGn8dJJgJvOD539Sl3GXH/mza2/KMyxha9/IXPMGBjJ98dwiuLjKkpkqot/P0gT+0GVuXSJNSY+cKBTD81PxVbA/W0rKBRX4nST97mw11QIHCLabhKEwiZNVKWH/75MHS8nRyQdPFArbWPrYqpMXnuFCaZm2XDILdJCcLhIduzG7P0+WLzsRgszag278Js1neRSKD1sMsCXxwx1qBHcEy6bYSQqr1825OEMnXKMJuEA4ePAcKtqF25WZEQo1KEQZDboIxS48U/vjRVVaKCkxrzCulyX7Ho/zWpb/q378DXwjEm/tXZ9gcqjLZxtEyy0mxUxHQ0/o8WAIm48pP343PGN228ZBmBDxCy4Fyw4eRxOEAror5lIwTLnklN2OkEMYFgtubrixJI=
   file_glob: true
-  file: "./build/lib/*.jar"
+  file: "./build/libs/*.jar"
   on:
     tags: true
     repo: Giotino/eSignatureServer
