@@ -19,7 +19,13 @@ import java.io.IOException;
 public class SignThread extends Thread {
   private static final Logger logger = LoggerFactory.getLogger(SignController.class);
   private static final int CONNECTION_TIMEOUT_MS = 1000;
+
   private boolean running = true;
+  private SignQueue signQueue;
+
+  public SignThread (SignQueue signQueue) {
+    this.signQueue = signQueue;
+  }
 
   public void stopRunning () {
     this.running = false;
@@ -64,7 +70,7 @@ public class SignThread extends Thread {
   public void run () {
     while (this.running) {
       try {
-        Document document = Application.signQueue.signNext();
+        Document document = signQueue.signNext();
         if (document == null) {
           Thread.sleep(1000);
         } else {

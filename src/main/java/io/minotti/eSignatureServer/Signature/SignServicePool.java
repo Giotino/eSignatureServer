@@ -1,18 +1,25 @@
 package io.minotti.eSignatureServer.Signature;
 
 import io.minotti.eSignatureServer.Signature.Service.SignService;
+import io.minotti.eSignatureServer.StorageManager;
 
+import java.io.File;
 import java.io.IOException;
 import java.util.HashMap;
 
 public class SignServicePool {
   private HashMap<String, SignService> pool = new HashMap<>();
+  private StorageManager storageManager;
+
+  public SignServicePool (StorageManager storageManager) {
+    this.storageManager = storageManager;
+  }
 
   public void register (String name, SignService service) {
     pool.put(name, service);
   }
 
-  private SignService get (String name) {
+  public SignService get (String name) {
     return pool.get(name);
   }
 
@@ -23,7 +30,11 @@ public class SignServicePool {
       throw new InvalidSigningFormatException(inDocument, inDocument.getFormat());
     }
 
-    Document outDocument = service.sign(inDocument);
+    File output = storageManager.getNewFile("out");
+
+    service.sign(inDocument.getFile(), output);
+
+    Document outDocument = new Document(output, inDocument.getFormat(), inDocument.getWebhook());
 
     inDocument.getFile().delete();
 

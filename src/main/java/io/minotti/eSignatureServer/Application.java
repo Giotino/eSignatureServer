@@ -52,17 +52,17 @@ public class Application {
       }
     }
 
-    signServicePool = new SignServicePool();
+    signServicePool = new SignServicePool(storageManager);
     signServicePool.register("none", new NoSignService());
 
-    signQueue = new SignQueue();
+    signQueue = new SignQueue(signServicePool);
 
     SpringApplication app = new SpringApplication(Application.class);
     app.setDefaultProperties(Collections.singletonMap("server.address", config.server.address));
     app.setDefaultProperties(Collections.singletonMap("server.port", config.server.port.toString()));
     app.run(args); // Start the web server
 
-    SignThread signThread = new SignThread();
+    SignThread signThread = new SignThread(signQueue);
     signThread.start();  // Start the signing thread
   }
 }

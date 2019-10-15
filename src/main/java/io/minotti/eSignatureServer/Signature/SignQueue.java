@@ -1,15 +1,26 @@
 package io.minotti.eSignatureServer.Signature;
 
-import io.minotti.eSignatureServer.Application;
-
 import java.io.IOException;
 import java.util.concurrent.LinkedBlockingQueue;
 
 public class SignQueue {
   private LinkedBlockingQueue<Document> queue = new LinkedBlockingQueue<>();
+  private SignServicePool signServicePool;
+
+  public SignQueue (SignServicePool signServicePool) {
+    this.signServicePool = signServicePool;
+  }
 
   public void enqueue (Document document) {
     queue.add(document);
+  }
+
+  public Document dequeue () {
+    return queue.poll();
+  }
+
+  public Document getNext () {
+    return queue.peek();
   }
 
   Document signNext () throws IOException, SignatureException {
@@ -17,6 +28,6 @@ public class SignQueue {
     if (document == null)
       return null;
 
-    return Application.signServicePool.sign(document);
+    return signServicePool.sign(document);
   }
 }

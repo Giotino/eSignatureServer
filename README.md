@@ -1,5 +1,7 @@
 # eSignatureServer
 
+[![Build Status](https://travis-ci.org/Giotino/eSignatureServer.svg?branch=master)](https://travis-ci.org/Giotino/eSignatureServer)
+
 A simple REST server to sign documents following eIDAS specifications (currently only PAdES format)
 
 ## Config

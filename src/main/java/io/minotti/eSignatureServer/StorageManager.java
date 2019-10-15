@@ -7,7 +7,7 @@ import java.nio.file.Paths;
 public class StorageManager {
   private final Path basePath;
 
-  StorageManager (Path basePath) {
+  public StorageManager (Path basePath) {
     this.basePath = basePath;
   }
 

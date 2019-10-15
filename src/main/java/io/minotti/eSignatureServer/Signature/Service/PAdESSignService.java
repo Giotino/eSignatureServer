@@ -12,8 +12,8 @@ import eu.europa.esig.dss.pades.signature.PAdESService;
 import eu.europa.esig.dss.token.DSSPrivateKeyEntry;
 import eu.europa.esig.dss.token.KSPrivateKeyEntry;
 import eu.europa.esig.dss.validation.CommonCertificateVerifier;
-import io.minotti.eSignatureServer.Application;
 import io.minotti.eSignatureServer.Signature.Document;
+import io.minotti.eSignatureServer.StorageManager;
 
 import java.io.File;
 import java.io.IOException;
@@ -53,8 +53,8 @@ public class PAdESSignService implements SignService {
     this.signParameters.setCertificateChain(privateKey.getCertificateChain());
   }
 
-  public Document sign (Document document) throws IOException {
-    DSSDocument toSignDocument = new FileDocument(document.getFile().getAbsolutePath());
+  public void sign (File input, File output) throws IOException {
+    DSSDocument toSignDocument = new FileDocument(input.getAbsolutePath());
 
     ToBeSigned dataToSign = this.signService.getDataToSign(toSignDocument, this.signParameters);
 
@@ -63,9 +63,6 @@ public class PAdESSignService implements SignService {
 
     DSSDocument signedDSSDocument = this.signService.signDocument(toSignDocument, this.signParameters, signatureValue);
 
-    File file = Application.storageManager.getNewFile("out");
-    signedDSSDocument.save(file.getAbsolutePath());
-
-    return new Document(file, document.getFormat(), document.getWebhook());
+    signedDSSDocument.save(output.getAbsolutePath());
   }
 }
