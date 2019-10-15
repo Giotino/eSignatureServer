@@ -1,0 +1,11 @@
+{
+  "server": {
+    "address": "0.0.0.0", // Server bind address
+    "port": 8080 // Server bind port
+  },
+  "pkcs11Provider": {
+    "driverPath": "C:\\Software\\driver.dll", // pkcs11 driver path
+    "pin": "123456", // SmartCard pin
+    "keyName": "DS0" // SmartCard key name used for signature ("DS0" is the default for eIDAS)
+  }
+}

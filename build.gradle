@@ -1,0 +1,45 @@
+plugins {
+    id 'java'
+    id 'idea'
+    id 'org.springframework.boot' version '2.1.9.RELEASE'
+}
+
+group 'io.minotti'
+version '0.1'
+
+sourceCompatibility = 1.8
+targetCompatibility = 1.8
+
+repositories {
+    mavenCentral()
+    maven {
+        url 'https://ec.europa.eu/cefdigital/artifact/content/groups/public/'
+    }
+}
+
+apply plugin: 'java'
+apply plugin: 'io.spring.dependency-management'
+
+bootJar {
+    launchScript()
+}
+
+dependencies {
+    implementation 'org.springframework.boot:spring-boot-starter-web'
+    implementation 'org.springframework.boot:spring-boot-starter-actuator'
+
+    final apache_httpcomponents_version = '4.5.10'
+    compile "org.apache.httpcomponents:httpclient:$apache_httpcomponents_version"
+    compile "org.apache.httpcomponents:httpmime:$apache_httpcomponents_version"
+
+    final dss_version = '5.5.RC1'
+    implementation "eu.europa.ec.joinup.sd-dss:dss-service:$dss_version"
+    implementation "eu.europa.ec.joinup.sd-dss:dss-token:$dss_version"
+    implementation "eu.europa.ec.joinup.sd-dss:dss-pades:$dss_version"
+    implementation "eu.europa.ec.joinup.sd-dss:dss-cades:$dss_version"
+
+    compile "commons-io:commons-io:2.6"
+    implementation 'com.google.code.gson:gson:2.8.6'
+
+    testCompile group: 'junit', name: 'junit', version: '4.12'
+}
