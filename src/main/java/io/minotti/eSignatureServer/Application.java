@@ -16,11 +16,10 @@ import java.io.File;
 import java.io.IOException;
 import java.nio.file.Paths;
 import java.util.Collections;
-import java.util.logging.Level;
 
 @SpringBootApplication
 public class Application {
-  public static final Logger logger = LoggerFactory.getLogger(Application.class);
+  private static final Logger logger = LoggerFactory.getLogger(Application.class);
   public static Config config;
   public static StorageManager storageManager;
   public static SignServicePool signServicePool;

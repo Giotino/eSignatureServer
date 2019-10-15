@@ -17,7 +17,7 @@ import java.nio.file.Files;
 
 @RestController
 public class SignController {
-  public static final Logger logger = LoggerFactory.getLogger(SignController.class);
+  private static final Logger logger = LoggerFactory.getLogger(SignController.class);
 
   @RequestMapping(value = "/sign/deferred", method = {RequestMethod.POST, RequestMethod.PUT})
   public boolean signDeferred (@RequestParam("file") MultipartFile file, @RequestParam("format") String format, @RequestParam("webhook") String webhook) {
