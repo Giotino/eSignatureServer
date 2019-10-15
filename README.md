@@ -18,7 +18,7 @@ Simple `config.json` (See `config.full.json` for a full configuration with comme
 
 ## API
 
-All request with file must be `multipart/form-data`
+All requests with file must be `multipart/form-data`
 
 #### /sign/immediate
 
