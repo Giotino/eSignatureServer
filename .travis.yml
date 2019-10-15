@@ -25,5 +25,5 @@ deploy:
   file:
   - build/libs/*.jar
   on:
-    draft: true
+    tags: true
     repo: Giotino/eSignatureServer
