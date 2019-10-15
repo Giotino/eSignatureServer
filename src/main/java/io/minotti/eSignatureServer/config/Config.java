@@ -1,4 +1,4 @@
-package io.minotti.eSignatureServer.Config;
+package io.minotti.eSignatureServer.config;
 
 import com.google.gson.Gson;
 import org.apache.commons.io.FileUtils;
@@ -14,10 +14,10 @@ public class Config {
   }
 
   public static class Server {
-    public String address = "0.0.0.0";
-    public Integer port = 8080;
+    public final String address = "0.0.0.0";
+    public final Integer port = 8080;
   }
-  public Server server = new Server();
+  public final Server server = new Server();
 
   public static class Pkcs11Provider {
     public String driverPath;

@@ -1,11 +1,11 @@
-package io.minotti.eSignatureServer.Signature;
+package io.minotti.eSignatureServer.signature;
 
 import java.io.File;
 
 public class Document {
-  private File file;
-  private String format;
-  private String webhook;
+  private final File file;
+  private final String format;
+  private final String webhook;
 
   public Document (File file, String format) {
     this.file = file;

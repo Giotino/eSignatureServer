@@ -1,7 +1,7 @@
-package io.minotti.eSignatureServer.Signature;
+package io.minotti.eSignatureServer.signature;
 
 public class SignatureException extends Exception {
-  private Document document;
+  private final Document document;
 
   SignatureException (Document document) {
     super("");

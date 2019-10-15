@@ -1,11 +1,11 @@
-package io.minotti.eSignatureServer.Signature;
+package io.minotti.eSignatureServer.signature;
 
 import java.io.IOException;
 import java.util.concurrent.LinkedBlockingQueue;
 
 public class SignQueue {
-  private LinkedBlockingQueue<Document> queue = new LinkedBlockingQueue<>();
-  private SignServicePool signServicePool;
+  private final LinkedBlockingQueue<Document> queue = new LinkedBlockingQueue<>();
+  private final SignServicePool signServicePool;
 
   public SignQueue (SignServicePool signServicePool) {
     this.signServicePool = signServicePool;

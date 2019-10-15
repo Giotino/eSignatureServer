@@ -1,6 +1,6 @@
-package io.minotti.eSignatureServer.Signature;
+package io.minotti.eSignatureServer.signature;
 
-import io.minotti.eSignatureServer.Signature.Service.SignService;
+import io.minotti.eSignatureServer.signature.service.SignService;
 import io.minotti.eSignatureServer.StorageManager;
 
 import java.io.File;
@@ -8,8 +8,8 @@ import java.io.IOException;
 import java.util.HashMap;
 
 public class SignServicePool {
-  private HashMap<String, SignService> pool = new HashMap<>();
-  private StorageManager storageManager;
+  private final HashMap<String, SignService> pool = new HashMap<>();
+  private final StorageManager storageManager;
 
   public SignServicePool (StorageManager storageManager) {
     this.storageManager = storageManager;

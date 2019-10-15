@@ -1,4 +1,4 @@
-package io.minotti.eSignatureServer.Signature.Service;
+package io.minotti.eSignatureServer.signature.service;
 
 import eu.europa.esig.dss.enumerations.DigestAlgorithm;
 import eu.europa.esig.dss.enumerations.SignatureLevel;
@@ -12,18 +12,16 @@ import eu.europa.esig.dss.pades.signature.PAdESService;
 import eu.europa.esig.dss.token.DSSPrivateKeyEntry;
 import eu.europa.esig.dss.token.KSPrivateKeyEntry;
 import eu.europa.esig.dss.validation.CommonCertificateVerifier;
-import io.minotti.eSignatureServer.Signature.Document;
-import io.minotti.eSignatureServer.StorageManager;
 
 import java.io.File;
 import java.io.IOException;
 import java.util.List;
 
 public class PAdESSignService implements SignService {
-  private Pkcs11Provider pkcs11Provider;
+  private final Pkcs11Provider pkcs11Provider;
   private DSSPrivateKeyEntry privateKey;
-  private PAdESSignatureParameters signParameters;
-  private PAdESService signService;
+  private final PAdESSignatureParameters signParameters;
+  private final PAdESService signService;
 
   public PAdESSignService (Pkcs11Provider pkcs11Provider, String keyName) {
     this.pkcs11Provider = pkcs11Provider;

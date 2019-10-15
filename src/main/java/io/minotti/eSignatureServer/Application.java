@@ -1,12 +1,13 @@
 package io.minotti.eSignatureServer;
 
-import io.minotti.eSignatureServer.Config.Config;
-import io.minotti.eSignatureServer.Signature.Service.NoSignService;
-import io.minotti.eSignatureServer.Signature.Service.PAdESSignService;
-import io.minotti.eSignatureServer.Signature.Service.Pkcs11Provider;
-import io.minotti.eSignatureServer.Signature.SignQueue;
-import io.minotti.eSignatureServer.Signature.SignServicePool;
-import io.minotti.eSignatureServer.Signature.SignThread;
+import io.minotti.eSignatureServer.config.Config;
+import io.minotti.eSignatureServer.signature.service.NoSignService;
+import io.minotti.eSignatureServer.signature.service.PAdESSignService;
+import io.minotti.eSignatureServer.signature.service.Pkcs11Provider;
+import io.minotti.eSignatureServer.signature.SignQueue;
+import io.minotti.eSignatureServer.signature.SignServicePool;
+import io.minotti.eSignatureServer.signature.SignThread;
+import io.minotti.eSignatureServer.validation.Validator;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.boot.SpringApplication;
@@ -20,11 +21,12 @@ import java.util.Collections;
 @SpringBootApplication
 public class Application {
   private static final Logger logger = LoggerFactory.getLogger(Application.class);
-  public static Config config;
+  private static Config config;
   public static StorageManager storageManager;
   public static SignServicePool signServicePool;
   public static SignQueue signQueue;
-  public static Pkcs11Provider pkcs11Provider;
+  private static Pkcs11Provider pkcs11Provider;
+  public static Validator validator;
 
   public static void main (String[] args) {
     try {
@@ -56,6 +58,8 @@ public class Application {
     signServicePool.register("none", new NoSignService());
 
     signQueue = new SignQueue(signServicePool);
+
+    validator = new Validator();
 
     SpringApplication app = new SpringApplication(Application.class);
     app.setDefaultProperties(Collections.singletonMap("server.address", config.server.address));

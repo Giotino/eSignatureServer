@@ -1,7 +1,7 @@
-package io.minotti.eSignatureServer.Signature;
+package io.minotti.eSignatureServer.signature;
 
-import io.minotti.eSignatureServer.Signature.Service.NoSignService;
-import io.minotti.eSignatureServer.Signature.Service.SignService;
+import io.minotti.eSignatureServer.signature.service.NoSignService;
+import io.minotti.eSignatureServer.signature.service.SignService;
 import io.minotti.eSignatureServer.StorageManager;
 import org.junit.Before;
 import org.junit.Rule;
@@ -19,7 +19,7 @@ public class SignServicePoolTest {
   private StorageManager storageManager;
 
   @Rule
-  public TemporaryFolder temporaryFolder = new TemporaryFolder();
+  public final TemporaryFolder temporaryFolder = new TemporaryFolder();
 
   @Before
   public void setUp () {

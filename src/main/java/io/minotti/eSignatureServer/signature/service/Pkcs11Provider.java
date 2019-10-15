@@ -1,4 +1,4 @@
-package io.minotti.eSignatureServer.Signature.Service;
+package io.minotti.eSignatureServer.signature.service;
 
 import eu.europa.esig.dss.enumerations.DigestAlgorithm;
 import eu.europa.esig.dss.model.SignatureValue;
@@ -10,7 +10,7 @@ import java.security.KeyStore;
 import java.util.List;
 
 public class Pkcs11Provider {
-  private Pkcs11SignatureToken token;
+  private final Pkcs11SignatureToken token;
 
   public Pkcs11Provider (String driverPath, String pin) {
     this.token = new Pkcs11SignatureToken(driverPath, new KeyStore.PasswordProtection(pin.toCharArray()));

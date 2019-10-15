@@ -1,4 +1,4 @@
-package io.minotti.eSignatureServer.Signature.Service;
+package io.minotti.eSignatureServer.signature.service;
 
 // TEST ONLY
 

@@ -2,7 +2,6 @@ package io.minotti.eSignatureServer;
 
 import java.io.File;
 import java.nio.file.Path;
-import java.nio.file.Paths;
 
 public class StorageManager {
   private final Path basePath;

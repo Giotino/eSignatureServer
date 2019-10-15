@@ -1,7 +1,7 @@
-package io.minotti.eSignatureServer.Signature;
+package io.minotti.eSignatureServer.signature;
 
-public class InvalidSigningFormatException extends SignatureException {
-  private String format;
+class InvalidSigningFormatException extends SignatureException {
+  private final String format;
 
   InvalidSigningFormatException (Document document, String format) {
     super(document);

@@ -1,7 +1,6 @@
-package io.minotti.eSignatureServer.Signature;
+package io.minotti.eSignatureServer.signature;
 
-import io.minotti.eSignatureServer.Application;
-import io.minotti.eSignatureServer.Server.SignController;
+import io.minotti.eSignatureServer.server.SignController;
 import org.apache.http.HttpResponse;
 import org.apache.http.client.HttpClient;
 import org.apache.http.client.config.RequestConfig;
@@ -21,7 +20,7 @@ public class SignThread extends Thread {
   private static final int CONNECTION_TIMEOUT_MS = 1000;
 
   private boolean running = true;
-  private SignQueue signQueue;
+  private final SignQueue signQueue;
 
   public SignThread (SignQueue signQueue) {
     this.signQueue = signQueue;
