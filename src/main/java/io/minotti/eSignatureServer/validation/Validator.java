@@ -1,5 +1,7 @@
 package io.minotti.eSignatureServer.validation;
 
+import eu.europa.esig.dss.enumerations.DigestAlgorithm;
+import eu.europa.esig.dss.enumerations.SignatureAlgorithm;
 import eu.europa.esig.dss.model.DSSDocument;
 import eu.europa.esig.dss.model.FileDocument;
 import eu.europa.esig.dss.model.x509.CertificateToken;
@@ -12,6 +14,8 @@ import io.minotti.eSignatureServer.signature.Document;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import java.util.Calendar;
+import java.util.Date;
 import java.util.List;
 
 public class Validator {
@@ -50,6 +54,11 @@ public class Validator {
       CertificateToken cert = certs.get(0);
       String DN = cert.getCertificate().getSubjectDN().getName();
       if (DN.contains("SERIALNUMBER=" + fiscal_code.toUpperCase())) {
+        DigestAlgorithm digestAlgorithm = signature.getDigestAlgorithm();
+        Date signingTime = signature.getSigningTime();
+        if(digestAlgorithm.equals(DigestAlgorithm.SHA1) && signingTime.after(new Date(2011, Calendar.JUNE, 30))) {
+          continue; // Ignore if it's a SHA1 after 30 june 2011 (invalid)
+        }
         return true;
       }
     }
